@@ -1,0 +1,27 @@
+name: specific branch, tags and path
+on:
+    push:
+        branches:
+            - "main"
+            - "feature/*" #only one / is included
+            - "feature/**" #only all / and after is included
+            - "!test" # exclude this branch
+        branches-ignore:
+            - dev
+            - uat
+        tags:
+            - "v1.*" #  v1.* tags
+        paths:
+            - "*.js"
+            - ".gitignore"
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: main branch
+              run: |
+                  echo "Current branch: $GITHUB_REF"
+                  echo "Ref: $GITHUB_SHA"
+                  echo "Pusher: $GITHUB_ACTOR"
+                  echo "Event name: $GITHUB_EVENT_NAME"
+                  echo "Action: $GITHUB_ACTION"

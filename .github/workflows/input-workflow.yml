@@ -1,0 +1,42 @@
+name: input workflow
+
+on:
+    workflow_dispatch:
+        inputs:
+            name:
+                description: "Input for the workflow"
+                required: true
+                type: string
+                default: "Github Action"
+            number:
+                description: "Input for the number"
+                # required: true
+                type: number
+                default: 5
+            option:
+                description: "Input for the optional boolean"
+                type: choice
+                required: true
+                options:
+                    - "AWS"
+                    - "AZURE"
+                default: "AWS"
+            boolean:
+                description: "Input for the boolean"
+                type: boolean
+                required: false
+            environment:
+                description: "Input for the environment variable"
+                type: string
+                required: false
+                default: "production"
+
+jobs:
+    reusable_workflow_job:
+        runs-on: ubuntu-latest
+        steps:
+            - run: echo "Hi i am  ${{ inputs.name}}"
+            - run: echo "The number is  ${{ inputs.number }}"
+            - run: echo "The option is  ${{ inputs.option }}"
+            - run: echo "The boolean is  ${{ inputs.boolean }}"
+            - run: echo "The environment is  ${{ inputs.environment }}"

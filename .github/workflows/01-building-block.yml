@@ -1,0 +1,19 @@
+name: 01-Buiding-Blocks
+
+on: [workflow_dispatch]
+
+jobs:
+    echo-hello:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Hello
+              run: echo "Hello, world!"
+    echo-goodbye:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Goodbye
+              run: |
+                  echo "i will fail with exit 1"
+                  exit 0
+            - name: Goodbye
+              run: echo "Goodbye!"

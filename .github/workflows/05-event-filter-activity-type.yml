@@ -1,0 +1,13 @@
+name: event filter and activity type
+on:
+    pull_request:
+        types: [opened, synchronize]
+        branches:
+            - main
+jobs:
+    echo-to-the-workflow:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Print PR running
+              run: |
+                  echo "Running whenever a PR is opened or syncronized AND basr branch is main"

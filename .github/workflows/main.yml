@@ -1,0 +1,37 @@
+name: learn_github_action #workflow name
+run-name: ${{ github.actor }} in learning #user name of github | it set a dynamic run for your workflow run
+on:
+    push: # trigger event
+jobs:
+    shell-commands: #name given for your job
+        runs-on: ubuntu-latest # job environment
+        steps: #task on the job
+            - name: Checkout repository
+              uses: actions/checkout@v2
+            - uses: actions/setup-node@v4 #actions in github | we use - uses for action
+              with:
+                  node-version: "20"
+            - run: npm install -g bats # individual commands
+            - run: bats -v
+            - run: echo "Hello World"
+            - name: Multiple commands
+              run: |
+                  echo "This is a shell script"
+                  echo "Hello, World!"
+    parrallel-cmd: # this is parallel job
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - name: Multiple commands
+              run: |
+                  echo "This is a shell script on parallel"
+                  echo "Parallel job"
+    depend-job-cmd:
+        runs-on: ubuntu-latest
+        needs: shell-commands #depending on first shell-commands job
+        steps:
+            - uses: actions/checkout@v2
+            - name: Multiple commands
+              run: |
+                  echo "This is a shell script on depends-on"
+                  echo "This only work on shell-commamd-job"

@@ -1,0 +1,27 @@
+name: working directory
+on: [push]
+defaults:
+    run:
+        shell: bash
+        # working-directory: /opt/github/workspace
+jobs:
+    display:
+        runs-on: ubuntu-latest
+        steps:
+            - name: displaying
+              run: |
+                  pwd
+                  ls -a
+                  echo $GITHUB_SHA
+                  echo $GITHUB_REPOSITORY
+                  echo $GITHUB_WORKSPACE
+    display_proc:
+        runs-on: ubuntu-latest
+        defaults:
+            run:
+                shell: python
+        steps:
+            - name: displaying proc
+              run: |
+                  import platform
+                  print(platform.processor())

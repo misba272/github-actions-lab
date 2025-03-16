@@ -1,0 +1,125 @@
+# Automate our software development workflow
+
+it will react to specific events that happen in your repository
+events: push, pull, issue
+
+# github > workflow > events > trigger > workflow > github action
+
+-   workflow are configurable automated process that can be set up in ur repo in order to perform a certain task. task can be testing your code publishing a package deploying an application, sending slack messages etc
+-   In a workflow u can have one or more jib and each job can have multiple steps
+
+.github/worflow/main.yml
+
+# Events:
+
+-   An event is specific activity in repo that triggers a workfow run for eg an activity can orginate when someone create a pull req or issues or maintaine push in github action there are 4 type of events :
+
+# - repository events:
+
+    they are events in ur repo like push pull open issue
+
+# - external events:
+
+    like sending a post event githb rest api
+
+# - shedule events:
+
+    events can also be triggered on a specific event like a corn jib
+
+# - manual events:
+
+    we can also trigger our workfow run manually
+
+# Jobs :
+
+-   a job is a set of steps in workflow that is executed on the same runner machine. each step is either a shell script that will be executed or an action that will be run
+-   steps are executed in order and are dependent each other
+-   since each step is executed of a job on a same runner machine we can share the data from one step to another step.
+-   you can also configure the job dependencies with another job. by default jobs has no dependencies and they can run in parallel with each other
+-   when a job take a dependency on another job it will wait for the depended job to cmplt before it can run
+
+# Runner machine:
+
+-   it has a runner software installed. the runner software will be connected to the github and it will be accept the job and execute them
+    there are 3 type :
+    -   github hosted runners:
+        github hosted runner are commenly used runner which are easy to use they are vm which is cpmlt managed by github. It offers linux, windows and macOS, it also come with curl, git, npm, pip, languages like python, ruby, nodejs, androidSDK etc. You dont have controll over hardware and operator sysytem and only free for public repo, however for private repo u have a free usage limit and then u will have to pay
+    -   self hosted runners:
+        they are machine which are maintened and managed by u or ur orgnization.
+    -   large runners:
+        which is offered by github. a range of large runner have more ram and more cpu. this runner are hosted by github and also have runner appication and other tool we metioned for github hosted runners
+
+# Steps in a Job:
+
+-   each job can containe one or more steps that can be executed on the runner machines this steps can either be a simple command likr npm install echo string or may be a bash script however steps can also run actions
+
+# Parrallel Run:
+
+-   in a workflow we can have many of theis job each job is going to run on diff machine and they dont actually depend on each other and therfor they can run parallel
+
+# Interview Questions:
+
+-   I have a repository which containe a workflow, when ever i run a workflow i need to get a debugging log all the time how can you get that
+    Ans: goes to secrets > actions > variables
+    ACTIONS_STEP_DEBUG = true
+    it enable debug log when we try to rerun the job
+    ACTIONS_RUNNER_DEBUG = true
+    this will will give you more additional log to you
+
+-   I have a repository with a workflow now i want to update a configuration but i don't want to run a workflow for a specific commit
+
+*   when we commit use like "hello [actions skip]" / [skip ci/ci] / [skip/np] / [ci/skip]
+
+# i have a workflow which basically need to run which is based on the another workflow how can you do this
+
+-   to trigger a workflow to run based on the execution of another workflow can be done using an event called workflow_run
+
+# filtering out workflow run based on our branch tag and path
+
+-   it will work inc rule ways
+
+# there are 3 branches in your workflow , i want to work this workflow excluding dev and uat branches
+
+branches-ignore:
+
+-   dev
+-   uat
+
+# i want to manually run the workflow
+
+-   workflow_dispatch
+
+# input variables
+
+-   input variable
+
+# 2nd workflow using diff events
+
+name: workflow events
+trigger push
+echo:
+ubuntu
+show the trigger
+type of the name of the event that trigger workflow
+
+adde more event
+pull_request
+schedule
+workflow_dispatcg
+
+on schedule
+
+-   cron: '<cron expression>'
+
+# /05 event filter and activity tyoe
+
+name: event filter and activity type
+trigger pull_req
+restrict the ativity only
+opened and syncronize
+use event filter to restric the workflow run to be only by change in main brach
+job echo to the workflow
+Running whenever a PR is opened or syncronized AND base branch is main
+
+edit readme.md
+new branch pr-test-1

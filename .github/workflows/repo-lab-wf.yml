@@ -1,0 +1,83 @@
+name: repo-event
+on:
+    push:
+    pull_request:
+        types: [opened, reopened]
+    issues:
+        types: [opened, reopened]
+jobs:
+    repo-lab-event:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Run Lab Event Action
+              uses: actions/checkout@v2
+            - name: Run Lab Event Action
+              run: |
+                  echo "Event: $GITHUB_EVENT_NAME"
+                  echo "Action: $GITHUB_ACTION"
+                  echo "Ref: $GITHUB_REF"
+                  echo "SHA: $GITHUB_SHA"
+                  echo "Repository: $GITHUB_REPOSITORY"
+                  echo "Actor: $GITHUB_ACTOR"
+                  echo "Organization: $GITHUB_ORGANIZATION"
+                  echo "Pull Request Number: $GITHUB_PULL_REQUEST"
+                  echo "Issue Number: $GITHUB_ISSUE_NUMBER"
+                  echo "Comment Body: $GITHUB_COMMENT_BODY"
+                  echo "Issue Title: $GITHUB_ISSUE_TITLE"
+                  echo "Issue State: $GITHUB_ISSUE_STATE"
+                  echo "Issue Labels: $GITHUB_ISSUE_LABELS"
+                  echo "Pull Request Author: $PULL_REQUEST_AUTHOR"
+                  echo "Pull Request Author Avatar: $PULL_REQUEST_AUTHOR_AVATAR_URL"
+                  echo "Pull Request Base Ref: $PULL_REQUEST_BASE_REF"
+                  echo "Pull Request Head Ref: $PULL_REQUEST_HEAD_REF"
+                  echo "Pull Request Merge Commit SHA: $PULL_REQUEST_MERGE_SHA"
+                  echo "Pull Request Head Commit SHA: $PULL_REQUEST_HEAD_COMMIT_SHA"
+                  echo "Pull Request Merge Author: $PULL_REQUEST_MERGE_AUTHOR"
+                  echo "Pull Request Merge Author Avatar: $PULL_REQUEST_MERGE_AUTHOR_AVATAR_URL"
+                  echo "Pull Request Merge Commit Message: $PULL_REQUEST_MERGE_COMMIT_MESSAGE"
+                  echo "Pull Request Merge Commit Author: $PULL_REQUEST_MERGE_COMMIT_AUTHOR"
+                  echo "Pull Request Merge Commit Author Avatar: $PULL_REQUEST_MERGE_COMMIT_AUTHOR_AVATAR_URL"
+                  echo "Pull Request Review Author: $PULL_REQUEST_REVIEW_AUTHOR"
+                  echo "Pull Request Review Author Avatar: $PULL_REQUEST_REVIEW_AUTHOR_AVATAR_URL"
+                  echo "Pull Request Review Comment Body: $PULL_REQUEST_REVIEW_COMMENT_BODY"
+                  echo "Pull Request Review State: $PULL_REQUEST_REVIEW_STATE"
+                  echo "Pull Request Review Comment Author: $PULL_REQUEST_REVIEW_COMMENT_AUTHOR"
+                  echo "Pull Request Review Comment Author Avatar: $PULL_REQUEST_REVIEW_COMMENT_AUTHOR_AVATAR_URL"
+                  echo "Pull Request Review Comment Timestamp: $PULL_REQUEST_REVIEW_COMMENT_TIMESTAMP"
+                  echo "Pull Request Review Comment URL: $PULL_REQUEST_REVIEW_COMMENT_URL"
+                  echo "Pull Request Review Comment Commit SHA: $PULL_REQUEST_REVIEW_COMMENT_COMMIT_SHA"
+                  echo "Pull Request Review Comment Author Name: $PULL_REQUEST_REVIEW_COMMENT_AUTHOR_NAME"
+                  echo "Pull Request Review Comment Author Email: $PULL_REQUEST_REVIEW_COMMENT_AUTHOR_EMAIL"
+                  echo "Pull Request Review Comment Author Login: $PULL_REQUEST_REVIEW_COMMENT_AUTHOR_LOGIN"
+                  echo "Pull Request Review Comment Author Avatar URL: $PULL_REQUEST_REVIEW_COMMENT_AUTHOR_AVATAR_URL"
+                  echo "Pull Request Review Comment Created At: $PULL_REQUEST_REVIEW_COMMENT_CREATED_AT"
+                  echo "Pull Request Review Comment Updated At: $PULL_REQUEST_REVIEW_COMMENT_UPDATED_AT"
+                  echo "Pull Request Review Comment HTML URL: $PULL_REQUEST_REVIEW_COMMENT_HTML_URL"
+                  echo "Pull Request Review Comment Comment ID: $PULL_REQUEST_REVIEW_COMMENT_COMMENT_ID"
+                  echo "Pull Request Review Comment Parent Comment ID: $PULL_REQUEST_REVIEW_COMMENT_PARENT_COMMENT_ID"
+                  echo "Pull Request Review Comment In Reply To Comment ID: $PULL_REQUEST_REVIEW_COMMENT_IN_REPLY_TO_COMMENT_ID"
+                  echo "Pull Request Review Comment Reactions: $PULL_REQUEST_REVIEW_COMMENT_REACTIONS"
+                  echo "Pull Request Review Comment Reactions Count: $PULL_REQUEST_REVIEW_COMMENT_REACTIONS_COUNT"
+                  echo "Pull Request Review Comment Reactions URL: $PULL_REQUEST_REVIEW_COMMENT_REACTIONS_URL"
+                  echo "Pull Request Review Comment Reactions Named Reactions: $PULL_REQUEST_REVIEW_COMMENT_REACTIONS_NAMED_REACTIONS"
+                  echo "Pull Request Review Comment Reactions Organization Reactions: $PULL_REQUEST_REVIEW_COMMENT_REACTIONS_ORGANIZATION_REACTIONS"
+                  echo "Pull Request Review Comment Reactions User Reactions: $PULL_REQUEST_REVIEW_COMMENT_REACTIONS_USER_REACTIONS"
+                  echo "Pull Request Review Comment Reactions Total Count: $PULL_REQUEST_REVIEW_COMMENT_REACTIONS_TOTAL_COUNT"
+                  echo "Pull Request Review Comment Reactions Last Modified At: $PULL_REQUEST_REVIEW_COMMENT_REACTIONS_LAST_MODIFIED_AT"
+                  echo "Pull Request Review Comment Reactions Last Modified By: $PULL_REQUEST_REVIEW_COMMENT_REACTIONS_LAST_MODIFIED_BY"
+                  echo "Pull Request Review Comment Reactions Last Modified By Login: $PULL_REQUEST_REVIEW_COMMENT_REACTIONS_LAST_MODIFIED_BY_LOGIN"
+                  echo "Pull Request Review Comment Reactions Last Modified By Avatar URL: $PULL_REQUEST_REVIEW_COMMENT_REACTIONS_LAST_MODIFIED_BY_AVATAR_
+                  echo "Pull Request Review Comment Reactions Last Modified By Type: $PULL_REQUEST_REVIEW_COMMENT_REACTIONS_LAST_MODIFIED_BY_TYPE"
+                  echo "Pull Request Review Comment Reactions Last Modified By URL: $PULL_REQUEST_REVIEW_COMMENT_REACTIONS_LAST_MODIFIED_BY_URL"
+                  echo "Pull Request Review Comment Reactions Last Modified By Id: $PULL_REQUEST_REVIEW_COMMENT_REACTIONS_LAST_MODIFIED_BY_ID"
+                  echo "Pull Request Review Comment Reactions Last Modified By Node Id: $PULL_REQUEST_REVIEW_COMMENT_REACTIONS_LAST_MODIFIED_BY_NODE_ID"
+                  echo "Pull Request Review Comment Reactions Last Modified By Html Url: $PULL_REQUEST_REVIEW_COMMENT_REACTIONS_LAST_MODIFIED_BY_HTML_URL"
+                  echo "Pull Request Review Comment Reactions Last Modified By Avatar Url: $PULL_REQUEST_REVIEW_COMMENT_REACTIONS_LAST_MODIFIED_BY_AVATAR_
+                  echo "Pull Request Review Comment Reactions Last Modified By Gravatar Id: $PULL_REQUEST_REVIEW_COMMENT_REACTIONS_LAST_MODIFIED_BY_GRAVAT
+                  echo "Pull Request Review Comment Reactions Last Modified By Gravatar Url: $PULL_REQUEST_REVIEW_COMMENT_REACTIONS_LAST_MODIFIED_BY_GRAVAT
+                  echo "Pull Request Review Comment Reactions Last Modified By Followers Count: $PULL_REQUEST_REVIEW_COMMENT_REACTIONS_LAST_MODIFIED_BY_FOLLOWERS_
+                  echo "Pull Request Review Comment Reactions Last Modified By Following Count: $PULL_REQUEST_REVIEW_COMMENT_REACTIONS_LAST_MODIFIED_BY_FOLLOWING_COUNT
+                  echo "Pull Request Review Comment Reactions Last Modified By Public Repos Count: $PULL_REQUEST_REVIEW_COMMENT_REACTIONS_LAST_MODIFIED_BY_PUBLIC_
+                  echo "Pull Request Review Comment Reactions Last Modified By Public Gists Count: $PULL_REQUEST_REVIEW_COMMENT_REACTIONS_LAST_MODIFIED_BY_PUBLIC_
+                  echo "Pull Request Review Comment Reactions Last Modified By Created At: $PULL_REQUEST_REVIEW_COMMENT_REACTIONS_LAST_MODIFIED_BY_CREATED_AT"
+                  echo "Pull Request Review Comment Reactions Last Modified By Updated At: $PULL_REQUEST_REVIEW_COMMENT_REACTIONS_LAST_MODIFIED_BY_UPDATED_AT"

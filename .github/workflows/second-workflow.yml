@@ -1,0 +1,13 @@
+name: secound-workflow #workflow name
+run-name: ${{ github.actor }} in learning #user name of github | it set a dynamic run for your workflow run
+on:
+    push: # trigger event
+jobs:
+    shell-commands: #name given for your job
+        runs-on: ubuntu-latest # job environment
+        steps: #task on the job
+            - run: echo "second workflow"
+            - name: Multiple commands
+              run: |
+                  echo "This is a shell script on second workflow"
+                  echo "test second!"
